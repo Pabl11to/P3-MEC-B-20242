@@ -1,1 +1,194 @@
+**En las siguientes líneas de código encontramos un programa con la una clase llamada Cuenta bancaria  con métodos que permiten realizar un deposito y mostrar saldo** 
+    
+    ```
+    class Account {
+        private int account_number;
+        private int account_balance;
+    
+        public void show Data() {
+            //code to show data
+        }
+    
+        public void deposit(int a) {
+            if (a < 0) {
+                //show error
+            } else
+                account_balance = account_balance + a;
+        }
+    }
+    ```
+    
 
+**Si  una hacker logra ingresar al código de su propia cuenta bancaria he intenta realizarse un deposito de  -100 USD realizando las siguientes modificaciones al código fuente**
+
+```
+class Account {
+    private int account_number;
+    private int account_balance;
+ }
+    
+class hacker{
+		Account a=new Account();
+		a.account_balance=-100 
+}
+
+    public void show Data() {
+        //code to show data
+    }
+
+    public void deposit(int a) {
+        if (a < 0) {
+            //show error
+        } else
+            account_balance = account_balance + a;
+    }
+}
+```
+
+**¿La operación que desea realizar el hacker se efectuaría? Logrando así su cometido** 
+[F]  Falso
+
+**¿Cuál/es de los siguientes NO es un especificador de acceso para las clases de Java?**
+
+~ Público
+~ Protegido
+= Get
+= Set
+
+**¿Cual es el propósito del método `Main ()` **en Java?**
+
+~ Albergar una de las clases que utilizare para ejecutar de manera adecuada mi programa.
+=  Es el punto de entrada de un programa en Java, permitiéndome llamar a todos los métodos del programa a medida que se ejecuta línea a línea.
+~ Este método me permite declarar variables globales.
+
+**¿Qué es la encapsulación en Java?** 
+
+~ El proceso de convertir un tipo de dato en otro
+
+= El proceso de ocultar los detalles de implementación y mostrar solo la funcionalidad
+
+~ El proceso de heredar propiedades de una clase a otra
+
+~ Ninguna de las anteriores
+
+**¿Cuál es el propósito de la palabra clave `static` en Java?** 
+
+~ Para definir una constante
+= Para definir un método que puede ser llamado sin crear una instancia de la clase
+
+~ Para definir una clase que no puede ser instanciada
+
+~ Para definir un objeto que no puede ser instanciado 
+
+**¿En el siguiente programa el desarrollo del constructor es correcto?**
+
+```java
+public class Main {
+  int AñoModelo;
+  String NombreModelo;
+
+  public Main(int año, String nombre) {
+	  AñoModelo = año;
+    NombreModelo = nombre;
+  }
+
+  public static void main(String[] args) {
+    Main myCarrro = new Main(1969, "Mustang");
+    System.out.println(myCarro.AñoModelo + " " + myCarro.NombreModelo);
+  }
+}
+```
+
+- [V]  Verdadero
+
+**¿Qué es una clase abstracta en Java?**
+
+= Una clase que no puede ser instanciada y puede contener métodos abstractos
+
+~ Una clase que solo contiene métodos abstractos
+
+~ Una clase que no puede ser heredada
+
+~ Una clase que no tiene métodos 
+
+**¿Qué palabra clave se utiliza para definir una constante en Java?**
+
+~ const
+
+~ constant
+
+= final
+
+~ static
+
+**¿Cuál es la forma correcta de declarar un array de enteros en Java?**
+
+~ int numbers = new int[];
+
+~ int[] numbers = new int[];
+
+~nt numbers[] = new int();
+
+= int[] numbers = new int[5];
+
+**Analice el siguiente texto** 
+
+```
+  // Declaración de Variables
+       Integer Numero;
+       String dia;
+       dia="";
+
+       // Entrada de Datos
+       Numero=Integer.parseInt(txtnumero.getText());
+
+       // Proceso
+       if(!txtnumero.getText().equals("")){
+         //Estructura Selectiva Múltiple
+       switch(Numero)
+       {
+           case 1:
+               dia="Lunes";
+               break;
+
+           case 2:
+               dia="Martes";
+               break;
+           case 3:
+               dia="Miercoles";
+               break;
+           case 4:
+               dia="Jueves";
+               break;
+           case 5:
+               dia="Viernes";
+               break;
+            case 6:
+               dia="Sábado";
+               break;
+           case 7:
+               dia="Domingo";
+               break;
+
+           default:
+               JOptionPane.showMessageDialog(rootPane, "Ingrese un valor entre 1 y 7",
+               "Día de la Semana",JOptionPane.ERROR_MESSAGE);
+               break;
+        }
+       }
+      else {
+       JOptionPane.showMessageDialog(rootPane,"Ingrese un valor numérico");
+      }
+
+       //Salida de Información
+      ###########
+
+      }
+```
+
+**En la parte señalada con numerales (#), que estructura hace falta para que el código funcione a la perfección** 
+
+~ TxtDia.getText(dia);
+= TxtDia.setText(dia);
+ ~TxtDia.setText(dia)
+ ~Dia.Tect(dia);
