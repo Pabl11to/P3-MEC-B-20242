@@ -1,0 +1,70 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.LinkedList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+// Clase Paciente
+class Paciente {
+    private String cedula;
+    private String categoria;
+    private String servicio;
+    private String horaLlegada;
+
+    public Paciente(String cedula, String categoria, String servicio, String horaLlegada) {
+        this.cedula = cedula;
+        this.categoria = categoria;
+        this.servicio = servicio;
+        this.horaLlegada = horaLlegada;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public String getServicio() {
+        return servicio;
+    }
+
+    public String getHoraLlegada() {
+        return horaLlegada;
+    }
+
+    @Override
+    public String toString() {
+        return "Paciente{" +
+                "Cédula='" + cedula + '\'' +
+                ", Categoría='" + categoria + '\'' +
+                ", Servicio='" + servicio + '\'' +
+                ", Hora de Llegada='" + horaLlegada + '\'' +
+                '}';
+    }
+}
+
+// Clase Sala de Pacientes
+class SalaDePacientes {
+    private LinkedList<Paciente> colaPacientes;
+
+    public SalaDePacientes() {
+        this.colaPacientes = new LinkedList<>();
+    }
+
+    public void agregarPaciente(Paciente paciente) {
+        colaPacientes.add(paciente);
+    }
+
+    public Paciente atenderPaciente() {
+        return colaPacientes.poll(); // Atiende al siguiente paciente en la cola
+    }
+
+    public int cantidadPacientes() {
+        return colaPacientes.size();
+    }
+}
+
