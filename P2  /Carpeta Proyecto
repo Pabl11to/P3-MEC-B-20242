@@ -169,4 +169,70 @@ public class AtencionEPS extends JFrame {
                 iniciarAtencion();
             }
         });
+
+
+ }
+
+    private void registrarPaciente() {
+        String cedula = txtCedula.getText();
+        String categoria = (String) comboCategoria.getSelectedItem();
+        String servicio = (String) comboServicio.getSelectedItem();
+
+        if (cedula.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese el número de cédula.");
+            return;
+        }
+
+        Paciente paciente = new Paciente(cedula, categoria, servicio);
+        sala.registrarPaciente(paciente);
+        txtHoraLlegada.setText(LocalTime.now().toString());
+        actualizarAreaPacientes();
+        txtCedula.setText(""); 
+    }
+
+    private void actualizarAreaPacientes() {
+        StringBuilder sb = new StringBuilder();
+        for (Paciente paciente : sala.getColaPacientes()) {
+            sb.append(paciente.getHoraLlegada()).append(" | ").append(paciente.getCedula())
+                .append(" | ").append(paciente.getServicioSolicitado()).append("\n");
+        }
+        areaPacientes.setText(sb.toString());
+    }
+
+    private void iniciarAtencion() {
+        if (!sala.hayPacientes()) {
+            JOptionPane.showMessageDialog(this, "No hay pacientes en la sala.");
+            return;
+        }
+
+        int intervalo = sliderTiempoAtencion.getValue() * 1000; // Convertir a milisegundos
+
+        timer.scheduleAtFixedRate(new TimerTask() {
+            
+            public void run() {
+                if (sala.hayPacientes()) {
+                    Paciente atendido = sala.atenderPaciente();
+                    areaProximoPaciente.setText("Cédula: " + atendido.getCedula() + "\n" +
+                            "Categoría: " + atendido.getCategoria() + "\n" +
+                            "Servicio: " + atendido.getServicioSolicitado());
+                    actualizarAreaPacientes();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Todos los pacientes han sido atendidos.");
+                    timer.cancel();
+                }
+            }
+        }, 0, intervalo);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            new AtencionEPS().setVisible(true);
+        });
+    }
+}
+
+
+
+
+
    
