@@ -1,23 +1,16 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.LinkedList;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalTime;
 
-// Clase Paciente
-class Paciente {
+public class Paciente {
     private String cedula;
     private String categoria;
-    private String servicio;
-    private String horaLlegada;
+    private String servicioSolicitado;
+    private LocalTime horaLlegada;
 
-    public Paciente(String cedula, String categoria, String servicio, String horaLlegada) {
+    public Paciente(String cedula, String categoria, String servicioSolicitado) {
         this.cedula = cedula;
         this.categoria = categoria;
-        this.servicio = servicio;
-        this.horaLlegada = horaLlegada;
+        this.servicioSolicitado = servicioSolicitado;
+        this.horaLlegada = LocalTime.now(); // Hora actual cuando se registra el paciente
     }
 
     public String getCedula() {
@@ -28,43 +21,19 @@ class Paciente {
         return categoria;
     }
 
-    public String getServicio() {
-        return servicio;
+    public String getServicioSolicitado() {
+        return servicioSolicitado;
     }
 
-    public String getHoraLlegada() {
+    public LocalTime getHoraLlegada() {
         return horaLlegada;
     }
 
     @Override
     public String toString() {
-        return "Paciente{" +
-                "Cédula='" + cedula + '\'' +
-                ", Categoría='" + categoria + '\'' +
-                ", Servicio='" + servicio + '\'' +
-                ", Hora de Llegada='" + horaLlegada + '\'' +
-                '}';
+        return "Paciente [Cedula: " + cedula + ", Categoria: " + categoria + 
+               ", Servicio: " + servicioSolicitado + ", Hora Llegada: " + horaLlegada + "]";
     }
 }
 
-// Clase Sala de Pacientes
-class SalaDePacientes {
-    private LinkedList<Paciente> colaPacientes;
-
-    public SalaDePacientes() {
-        this.colaPacientes = new LinkedList<>();
-    }
-
-    public void agregarPaciente(Paciente paciente) {
-        colaPacientes.add(paciente);
-    }
-
-    public Paciente atenderPaciente() {
-        return colaPacientes.poll(); // Atiende al siguiente paciente en la cola
-    }
-
-    public int cantidadPacientes() {
-        return colaPacientes.size();
-    }
-}
 
