@@ -29,11 +29,41 @@ public class Paciente {
         return horaLlegada;
     }
 
-    @Override
+    
     public String toString() {
         return "Paciente [Cedula: " + cedula + ", Categoria: " + categoria + 
                ", Servicio: " + servicioSolicitado + ", Hora Llegada: " + horaLlegada + "]";
     }
 }
+
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class SalaDePacientes {
+    private Queue<Paciente> colaPacientes;
+
+    public SalaDePacientes() {
+        colaPacientes = new LinkedList<>();
+    }
+
+    public void registrarPaciente(Paciente paciente) {
+        colaPacientes.add(paciente);
+    }
+
+    public Paciente atenderPaciente() {
+        return colaPacientes.poll(); // Atender al primer paciente en la cola
+    }
+
+    public boolean hayPacientes() {
+        return !colaPacientes.isEmpty();
+    }
+
+    public Queue<Paciente> getColaPacientes() {
+        return colaPacientes;
+    }
+}
+
+
 
 
